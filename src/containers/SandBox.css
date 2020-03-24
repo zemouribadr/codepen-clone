@@ -3,10 +3,13 @@
     height: 100vh;
     width: 100%;
 }
-
+textarea {
+    width:100%;
+    height : 150px;
+}
 .SandBox .grid.f {
-    flex: 10% 0 0;
-    max-width: 10%;
+    flex: 30% 0 0;
+    max-width: 30%;
 }
 
 .SandBox .grid {

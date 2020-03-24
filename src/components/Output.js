@@ -1,9 +1,10 @@
 import React from 'react'
 
-export const Output = (props) => {
+export const Output = ({content}) => {
     return (
         <div className="Output">
-            <p>Ouput</p>
+            <iframe srcDoc={content}/>
+            {/* <div dangerouslySetInnerHTML={{ __html: content }} /> */}
         </div>
     )
 }
