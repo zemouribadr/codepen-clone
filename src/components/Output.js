@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Output = ({ content }) => {
+ const Output = ({ content }) => {
 
     console.log("changed", content)
     let html = `
@@ -24,4 +24,4 @@ export const Output = ({ content }) => {
     )
 }
 
-export default Output;
+export default React.memo(Output);
