@@ -1,12 +1,27 @@
 import React, { useState } from 'react'
-
+import './Editor.css'
 
 const Editor = () => {
     const [focus, setFocus] = useState(false)
-    const [content, setContent] = useState("")
+    const [content, setContent] = useState([""])
+    const [line, setLine] = useState(0)
 
     const handleKeyPress = (e) => {
-        setContent(content.concat(e.key))
+        switch (e.key) {
+            case "Enter":
+                content.push("")
+                setLine(line + 1)
+                break;
+
+            default:
+                let arr = [...content]
+                arr[line] = arr[line].concat(e.key)
+                setContent(arr)
+                break;
+        }
+
+        e.stopPropagation()
+        e.preventDefault()
     }
     return (
         <div className={`editor`}
@@ -14,12 +29,21 @@ const Editor = () => {
             tabIndex="0"
             onKeyPress={handleKeyPress}
         >
-            {
-                content.split("").map((char,i) =>
-                    (<span key={i}>{char}</span>)
-                )
-            }
-            {focus && <span className="cursor blink"></span>}
+            <pre>
+                {
+                    content.map((l, index) =>
+                        (<div key={`e-${index}`}>
+                            {(l.split("").length == 0) ?
+                                <br />
+                                :
+                                l.split("").map((char, i) =>
+                                    (<span key={i}>{char}</span>)
+                                )}
+                        </div>)
+                    )
+                }
+                {focus && <span className="cursor blink"></span>}
+            </pre>
         </div>
     )
 }
