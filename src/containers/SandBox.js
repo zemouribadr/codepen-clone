@@ -6,10 +6,12 @@ import Js from '../components/Js'
 import Css from '../components/Css'
 
 const SandBox = () => {
-    console.log("sandbox")
+    
     const [html, setHtml] = useState("")
     const [js, setJs] = useState("")
     const [css, setCss] = useState("")
+    const [isResizing,setIsResizing] = useState(false) 
+    const [width, setWidth] = useState("411")
     const [content, setContent] = useState({
         html : ""  
     })
@@ -34,19 +36,27 @@ const SandBox = () => {
     const renderOutput = () => {
         setContent({ html, js, css })
     }
-
+    const handleResize = (e) => {
+        if(!isResizing) return
+        setWidth(e.clientX)
+    }
 
 
     return (
 
-        <div className="SandBox">
+        <div className="SandBox" onMouseMove = {handleResize} onMouseUp={(e) => {setIsResizing(false)}}>
+            
 
-            <div className="grid f">
+            <div className="grid f" style={{flex:  `${width}px 0 0` }}>
                 <button onClick={renderOutput}>  render </button>
                 <Html onChange={handleCodeChange} />
                 <Css onChange={handleCodeChange} />
                 <Js onChange={handleCodeChange} />
-                <div onMouseMove={(e) => {e.persist();console.log(e, e.clientX , e.screenX)}} className="slider"></div>
+                <div 
+                onMouseDown={(e) => {setIsResizing(true)}}
+                
+                
+                className="slider"></div>
             </div>
 
             <div className="grid">
