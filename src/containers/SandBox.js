@@ -54,8 +54,6 @@ const SandBox = () => {
                 <Js onChange={handleCodeChange} />
                 <div 
                 onMouseDown={(e) => {setIsResizing(true)}}
-                
-                
                 className="slider"></div>
             </div>
 

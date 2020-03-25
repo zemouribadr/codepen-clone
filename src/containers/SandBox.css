@@ -37,5 +37,35 @@ iframe {
     height: 20px;
     width: 10px;
     background-color: gray;
-    cursor: pointer;
+    cursor: col-resize;
 }
+.editor {
+    font-size: 12px;
+    
+    min-height:200px ;
+    border : 1px solid rgb(192, 191, 191);
+    width: 100%;
+    padding: 5px;
+}
+.cursor:after {
+content: "|";
+
+}
+
+.blink {
+    animation: blink-animation 1s steps(5, start) infinite;
+    -webkit-animation: blink-animation 1s steps(5, start) infinite;
+  }
+  @keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
+  }
+  @-webkit-keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
+  }
+  .focus {
+    border  : 2px solid rgb(124, 183, 250);
+  }

@@ -1,14 +1,10 @@
 import React from 'react'
-
+import Editor from '../uis/Editor'
 export default (props) => {
     return (
         <div className="Html">
             <p>Html</p>
-            <textarea onChange={(e) => {
-                props.onChange("html",e.target.value)
-            }}>
-                
-            </textarea>
+            <Editor/>
         </div>
     )
 }
